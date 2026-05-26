@@ -1,0 +1,41 @@
+[package]
+name = "PUSHKA"
+description = "P2P swap, escrow and limit orders aggregator on TON"
+version = "0.1.0"
+license = "MIT"
+
+[toolchain]
+acton = "1.1.0"
+
+[contracts.PushkaEscrow]
+display-name = "PushkaEscrow"
+src = "contracts/src/PushkaEscrow.tolk"
+depends = []
+
+[contracts.PushkaFactory]
+display-name = "PushkaFactory"
+src = "contracts/src/PushkaFactory.tolk"
+depends = ["PushkaEscrow"]
+
+[test]
+
+[fmt]
+width = 100
+ignore = []
+
+[scripts]
+deploy-emulation       = "acton script contracts/scripts/deploy.tolk"
+deploy-testnet         = "acton script contracts/scripts/deploy.tolk --net testnet"
+deploy-testnet-tc      = "acton script contracts/scripts/deploy.tolk --net testnet --tonconnect"
+deploy-mainnet         = "acton script contracts/scripts/deploy.tolk --net mainnet"
+deploy-mainnet-tc      = "acton script contracts/scripts/deploy.tolk --net mainnet --tonconnect"
+
+[import-mappings]
+acton = ".acton"
+contracts = "contracts/src"
+gen = "gen"
+tests = "contracts/tests"
+wrappers = "contracts/wrappers"
+
+# Check full Acton.toml reference and all available keys:
+# https://ton-blockchain.github.io/acton/docs/acton-toml
