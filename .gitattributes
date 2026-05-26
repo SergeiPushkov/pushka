@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  GitHub Linguist overrides
+#
+#  Goal: show that this repo is primarily a Tolk smart contract, not a Vite
+#  app. Without these hints, Linguist counts every line of auto-generated
+#  TypeScript wrappers (15-19 KB each) and weighs the Mini App dependency
+#  surface as if it were core source.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Auto-generated wrappers (don't count toward language stats) ──────────────
+wrappers-ts/*.gen.ts                  linguist-generated=true
+contracts/wrappers/*.gen.tolk         linguist-generated=true
+gen/**                                linguist-generated=true
+
+# ── Lock files & pinned dependencies ─────────────────────────────────────────
+package-lock.json                     linguist-generated=true
+
+# ── Acton stdlib (vendored, not authored here) ───────────────────────────────
+.acton/**                             linguist-vendored=true
+
+# ── shadcn-ui primitives copied verbatim from the template ───────────────────
+app/src/components/ui/**              linguist-vendored=true
+app/src/components/TonDiamond.tsx     linguist-vendored=true
+app/src/components/NetworkDropdown.tsx linguist-vendored=true
+app/src/lib/ton.ts                    linguist-vendored=true
+app/src/lib/router.ts                 linguist-vendored=true
+app/src/lib/utils.ts                  linguist-vendored=true
+app/src/providers/AppProviders.tsx    linguist-vendored=true
+app/src/polyfills.ts                  linguist-vendored=true
+app/src/main.tsx                      linguist-vendored=true
+app/src/styles.css                    linguist-vendored=true
+
+# ── Tolk is the primary language ─────────────────────────────────────────────
+# Linguist added native Tolk support in 2025. Be explicit so older
+# versions still count `.tolk` files toward language stats.
+*.tolk                                linguist-detectable=true
+*.tolk                                linguist-language=Tolk
+
+# ── Line endings: keep LF everywhere ─────────────────────────────────────────
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.boc binary
